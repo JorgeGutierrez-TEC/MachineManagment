@@ -18,22 +18,22 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'home:index' %}">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Empresa</a>
+                    <a class="nav-link" href="{% url 'empresa:empresa' %}">Empresa</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Maquinaria</a>
+                    <a class="nav-link" href="{% url 'maquinaria:maquinaria' %}">Maquinaria</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Inventario</a>
+                    <a class="nav-link" href="{% url 'inventario:inventario' %}">Inventario</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Empleados</a>
+                    <a class="nav-link" href="{% url 'empleados:empleados' %}">Empleados</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Status</a>
+                    <a class="nav-link" href="{% url 'status:status' %}">Status</a>
                   </li>
                   <li class="nav-item dropdown">
                 </ul>
@@ -59,7 +59,10 @@
 
             </div>
         </div>
-    
+      <!-- Footer (opcional, si lo necesitas) -->
+        <footer class="text-center mt-4">
+          <p>&copy; 2024 MachineManagement</p>
+        </footer>
         
         <div class="row">
             
