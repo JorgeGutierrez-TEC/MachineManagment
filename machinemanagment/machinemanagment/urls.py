@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', include('login.urls')),  # Cambia 'mi_app' por el nombre de tu app de login
+    path('', RedirectView.as_view(url='/login/', permanent=False)),  # Redirige la URL raíz a /login/
     path('', include("home.urls")),
     path('maquinaria/', include("maquinaria.urls")),
     path('empleados/', include("empleados.urls")),
