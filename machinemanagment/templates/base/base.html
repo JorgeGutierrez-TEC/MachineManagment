@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class="row">
+      {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">MachineManagment</a>
@@ -35,7 +36,6 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'status:status' %}">Status</a>
                   </li>
-                  <li class="nav-item dropdown">
                 </ul>
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -43,31 +43,24 @@
                 </form>
               </div>
             </div>
-          </nav>
+        </nav>
+      {% endif %}
     </div>
 
-    
-        <div class="row">
-            <div class="col-2">
-
-            </div>
-            <div class="col-8">
-              {% block content %}
-              {% endblock content %}
-            </div>
-            <div class="col-2">
-
-            </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          {% block content %}
+          {% endblock content %}
         </div>
-      <!-- Footer (opcional, si lo necesitas) -->
-        <footer class="text-center mt-4">
-          <p>&copy; 2024 MachineManagement</p>
-        </footer>
-        
-        <div class="row">
-            
-        </div>
+        <div class="col-2"></div>
+    </div>
     
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Footer (opcional, si lo necesitas) -->
+    <footer class="text-center mt-4">
+      <p>&copy; 2024 MachineManagement</p>
+    </footer>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   </body>
 </html>
