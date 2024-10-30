@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+
+{% block title %}Actualizar Empresa{% endblock title %}
+
+{% block content %}
+<!-- resolver/templates/empresa/actualizar_empresa.html -->
+
+<!-- Fondo degradado -->
+<div class="bg-gradient-primary py-5" >
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <!-- Encabezado -->
+                <div class="text-center mb-4 text-black">
+                    <h1 class="display-5 fw-bold">Actualizar Empresa</h1>
+                    <p>Actualiza la información de la empresa en este formulario.</p>
+                </div>
+
+                <!-- Tarjeta del formulario -->
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-5">
+                        <h5 class="card-title text-center mb-4 text-primary"><i class="bi bi-building"></i> Detalles de la Empresa</h5>
+
+                        <!-- Mensajes de error -->
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <strong>Por favor corrige los siguientes errores:</strong>
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        <!-- Formulario de actualización -->
+                        <form method="post" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            
+                            <!-- Campos del formulario -->
+                            <div class="form-group">
+                                {{ form.as_p }}
+                            </div>
+                            
+                            <!-- Botones de acción -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                                    <i class="bi bi-save-fill"></i> Guardar Cambios
+                                </button>
+                                <a href="{% url 'empresa:lista_empresas' %}" class="btn btn-outline-danger rounded-pill px-4">
+                                    <i class="bi bi-arrow-left-circle"></i> Volver
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

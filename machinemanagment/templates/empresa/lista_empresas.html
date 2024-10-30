@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Empresas{% endblock title %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Lista de Empresas</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{% url 'empresa:crear_empresa' %}" class="btn btn-primary btn-rounded">Crear Nueva Empresa</a>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre de Empresa</th>
+                <th>Ubicación</th>
+                <th>RFC</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empresa in empresas %}
+                <tr>
+                    <td>{{ empresa.nombre_empresa }}</td>
+                    <td>{{ empresa.ubicacion_empresa }}</td>
+                    <td>{{ empresa.RFC }}</td>
+                    <td>{{ empresa.estado }}</td>
+                    <td>
+                        <a href="{% url 'empresa:detalle_empresa' empresa.pk %}" class="btn btn-outline-info btn-sm btn-rounded">Ver Detalles</a>
+                        <a href="{% url 'empresa:actualizar_empresa' empresa.pk %}" class="btn btn-outline-warning btn-sm btn-rounded">Editar</a>
+                        <a href="{% url 'empresa:eliminar_empresa' empresa.pk %}" class="btn btn-outline-danger btn-sm btn-rounded" onclick="return confirm('¿Estás seguro de que deseas eliminar esta empresa?');">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No hay empresas registradas.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

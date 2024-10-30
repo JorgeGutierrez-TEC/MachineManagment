@@ -36,6 +36,8 @@ LOCAL_APPS = [
     'inventario',
     'maquinaria',
     'status',
+    'administrador',
+   
    
 ]
 

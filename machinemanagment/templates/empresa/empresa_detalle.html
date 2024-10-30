@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+
+{% block title %}Detalles de la Empresa{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Detalles de la Empresa</h1>
+    
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">{{ empresa.nombre_empresa }}</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Estado:</strong> {{ empresa.estado }}</p>
+            <p><strong>Ubicacion:</strong> {{ empresa.ubicacion_empresa }}</p>
+            <p><strong>Fecha de Creación:</strong> {{ empresa.fecha_creacion|date:"d/m/Y H:i" }}</p>
+            <p><strong>Fecha de Actualización:</strong> {{ empresa.fecha_actualizacion|date:"d/m/Y H:i" }}</p>
+        </div>
+        <div class="card-footer text-right">
+            <a href="{% url 'empresa:lista_empresas' %}" class="btn btn-secondary">Volver a la lista</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

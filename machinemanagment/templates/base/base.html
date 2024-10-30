@@ -22,7 +22,7 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'home:index' %}">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'empresa:empresa' %}">Empresa</a>
+                    <a class="nav-link" href="{% url 'empresa:lista_empresas' %}">Empresa</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'maquinaria:maquinaria' %}">Maquinaria</a>
@@ -35,6 +35,9 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'status:status_list' %}">Status</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'administrador:administrador' %}">Admin</a>
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
