@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'machinemanagment.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ManteMaquinaria2',
+        'NAME': 'ManteMaquinaria3',
         'USER': 'root',
-        'PASSWORD': 'Baby20150531',
+        'PASSWORD': 'lobito123',
         'HOST': 'localhost',
         'PORT': '3306',
     }

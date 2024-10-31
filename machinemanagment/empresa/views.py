@@ -1,10 +1,9 @@
-# resolver/views.py
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Empresa
+from .models import Empresas  # Asegúrate de importar el modelo correcto
 from .forms import EmpresaForm
 
 def lista_empresas(request):
-    empresas = Empresa.objects.all()
+    empresas = Empresas.objects.all()  # Cambia 'Empresa' por 'Empresas'
     return render(request, 'empresa/lista_empresas.html', {'empresas': empresas})
 
 def crear_empresa(request):
@@ -20,7 +19,7 @@ def crear_empresa(request):
 
 def actualizar_empresa(request, pk):
     # Obtener la empresa por su ID
-    empresa = get_object_or_404(Empresa, pk=pk)
+    empresa = get_object_or_404(Empresas, pk=pk)  # Cambia 'Empresa' por 'Empresas'
     
     if request.method == 'POST':
         # Crear el formulario con los datos enviados y la instancia de la empresa
@@ -39,12 +38,12 @@ def actualizar_empresa(request, pk):
     return render(request, 'empresa/actualizar_empresa.html', {'form': form})
 
 def eliminar_empresa(request, pk):
-    empresa = get_object_or_404(Empresa, pk=pk)
+    empresa = get_object_or_404(Empresas, pk=pk)  # Cambia 'Empresa' por 'Empresas'
     if request.method == 'POST':
         empresa.delete()
-        return redirect('lista_empresas')
+        return redirect('empresa:lista_empresas')  # Asegúrate de usar el namespace correcto
     return render(request, 'empresa/eliminar_empresa.html', {'empresa': empresa})
 
 def empresa_detalle(request, pk):
-    empresa = get_object_or_404(Empresa, pk=pk)
+    empresa = get_object_or_404(Empresas, pk=pk)  # Cambia 'Empresa' por 'Empresas'
     return render(request, 'empresa/empresa_detalle.html', {'empresa': empresa})

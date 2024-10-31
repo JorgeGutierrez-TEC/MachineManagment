@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Maquinaria{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Maquinaria</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Fecha de Adquisición</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maquinaria in maquinarias %}
+            <tr>
+                <td>{{ maquinaria.id_maquinaria }}</td>
+                <td>{{ maquinaria.nombre_maquinaria }}</td>
+                <td>{{ maquinaria.modelo }}</td>
+                <td>{{ maquinaria.marca }}</td>
+                <td>{{ maquinaria.fecha_adquisicion }}</td>
+                <td>{{ maquinaria.estado }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
