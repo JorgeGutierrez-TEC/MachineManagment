@@ -1,6 +1,3 @@
-from django.db import models
-
-
 
 # Modelo generado para la tabla empleados
 # This is an auto-generated Django model module.

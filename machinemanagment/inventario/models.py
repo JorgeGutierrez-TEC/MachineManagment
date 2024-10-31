@@ -1,6 +1,4 @@
-from django.db import models
 
-# 
 
 # Modelo generado para la tabla inventario_piezas
 # This is an auto-generated Django model module.
@@ -22,6 +20,9 @@ class InventarioPiezas(models.Model):
     class Meta:
         managed = False
         db_table = 'inventario_piezas'
+
+# Relaciones de llaves for�neas
+id_pieza = models.ForeignKey('inventario.piezas', on_delete=models.CASCADE, db_column='id_pieza', to_field='id_pieza')
 
 
 # Modelo generado para la tabla add_pieza
@@ -45,6 +46,10 @@ class AddPieza(models.Model):
     class Meta:
         managed = False
         db_table = 'add_pieza'
+
+# Relaciones de llaves for�neas
+id_pieza = models.ForeignKey('inventario.piezas', on_delete=models.CASCADE, db_column='id_pieza', to_field='id_pieza')
+id_proveedor = models.ForeignKey('inventario.proveedor_piezas', on_delete=models.CASCADE, db_column='id_proveedor', to_field='id_proveedor_piezas')
 
 
 # Modelo generado para la tabla proveedor_piezas

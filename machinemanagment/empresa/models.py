@@ -1,8 +1,3 @@
-from django.db import models
-
-
-
-
 
 
 # Modelo generado para la tabla empresas

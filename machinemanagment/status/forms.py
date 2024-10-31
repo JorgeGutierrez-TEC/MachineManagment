@@ -1,7 +1,7 @@
 from django import forms
-from .models import Status
+from .models import Estatus as Status
 
 class StatusForm(forms.ModelForm):
     class Meta:
         model = Status
-        fields = ['name', 'description', 'is_active']
+        fields = ['nombre', 'descripcion', 'esta_activo', 'esta_eliminado']

@@ -1,5 +1,3 @@
-from django.db import models
-
 
 
 # Modelo generado para la tabla mantenimientos
@@ -26,6 +24,12 @@ class Mantenimientos(models.Model):
     class Meta:
         managed = False
         db_table = 'mantenimientos'
+
+# Relaciones de llaves for�neas
+id_empresa = models.ForeignKey('empresa.Empresas', on_delete=models.CASCADE, db_column='id_empresa', to_field='id_empresa')
+id_maquinaria = models.ForeignKey('maquinaria.Maquinaria', on_delete=models.CASCADE, db_column='id_maquinaria', to_field='id_maquinaria')
+id_tipo_mantenimiento = models.ForeignKey('maquinaria.Tipo_mantenimiento', on_delete=models.CASCADE, db_column='id_tipo_mantenimiento', to_field='id_tipo_mantenimiento')
+Responsable_mantenimiento = models.ForeignKey('empleados.Empleados', on_delete=models.CASCADE, db_column='Responsable_mantenimiento', to_field='id_empleado')
 
 
 # Modelo generado para la tabla tipo_mantenimiento
@@ -71,6 +75,10 @@ class DetallemaquinariaEmpresa(models.Model):
         managed = False
         db_table = 'DetalleMaquinaria_empresa'
 
+# Relaciones de llaves for�neas
+id_empresa = models.ForeignKey('empresa.Empresas', on_delete=models.CASCADE, db_column='id_empresa', to_field='id_empresa')
+id_maquinaria = models.ForeignKey('maquinaria.Maquinaria', on_delete=models.CASCADE, db_column='id_maquinaria', to_field='id_maquinaria')
+
 
 # Modelo generado para la tabla piezas_mantenimiento
 # This is an auto-generated Django model module.
@@ -92,6 +100,10 @@ class PiezasMantenimiento(models.Model):
     class Meta:
         managed = False
         db_table = 'piezas_mantenimiento'
+
+# Relaciones de llaves for�neas
+id_mantenimiento = models.ForeignKey('maquinaria.Mantenimientos', on_delete=models.CASCADE, db_column='id_mantenimiento', to_field='id_mantenimiento')
+id_pieza = models.ForeignKey('inventario.piezas', on_delete=models.CASCADE, db_column='id_pieza', to_field='id_pieza')
 
 
 # Modelo generado para la tabla piezas

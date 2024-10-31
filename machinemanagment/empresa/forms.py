@@ -1,8 +1,8 @@
 # resolver/forms.py
 from django import forms
-from .models import Empresa
+from .models import Empresas
 
 class EmpresaForm(forms.ModelForm):
     class Meta:
-        model = Empresa
-        fields = ['nombre_empresa', 'ubicacion_empresa', 'RFC', 'estado']
+        model = Empresas
+        fields = ['nombre_empresa', 'ubicacion_empresa', 'rfc', 'estado']

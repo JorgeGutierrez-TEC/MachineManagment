@@ -1,6 +1,3 @@
-from django.db import models
-
-
 
 
 # Modelo generado para la tabla estatus
@@ -49,6 +46,9 @@ class Ganancias(models.Model):
         managed = False
         db_table = 'ganancias'
 
+# Relaciones de llaves for�neas
+id_reparacion = models.ForeignKey('status.reparaciones', on_delete=models.CASCADE, db_column='id_reparacion', to_field='id_reparacion')
+
 
 # Modelo generado para la tabla banco_em
 # This is an auto-generated Django model module.
@@ -92,6 +92,9 @@ class HistorialMaquinas(models.Model):
         managed = False
         db_table = 'historial_maquinas'
 
+# Relaciones de llaves for�neas
+id_maquinaria = models.ForeignKey('maquinaria.maquinaria', on_delete=models.CASCADE, db_column='id_maquinaria', to_field='id_maquinaria')
+
 
 # Modelo generado para la tabla reparaciones
 # This is an auto-generated Django model module.
@@ -114,3 +117,6 @@ class Reparaciones(models.Model):
     class Meta:
         managed = False
         db_table = 'reparaciones'
+
+# Relaciones de llaves for�neas
+id_maquinaria = models.ForeignKey('maquinaria.Maquinaria', on_delete=models.CASCADE, db_column='id_maquinaria', to_field='id_maquinaria')
