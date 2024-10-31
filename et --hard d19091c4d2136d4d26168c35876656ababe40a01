@@ -1,0 +1,89 @@
+[33mcommit be50c2ee1fad8b693b7d443ddc8425db0319c06b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Ramos Portillo Cesar <l21212033@tijuana.tecnm.mx>
+Date:   Wed Oct 30 20:10:10 2024 -0700
+
+    Moficacion-models-30-10
+
+[33mcommit ffdeebcb736513dc0e76f1170f1367141d77ad61[m
+Author: Ramos Portillo Cesar <l21212033@tijuana.tecnm.mx>
+Date:   Tue Oct 29 18:58:33 2024 -0700
+
+    Modela Asignados a cada APP
+
+[33mcommit d19091c4d2136d4d26168c35876656ababe40a01[m
+Merge: f236b4f 9295df3
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Tue Oct 29 18:23:59 2024 -0700
+
+    Merge branch 'main' of https://github.com/JorgeGutierrez-TEC/MachineManagment
+
+[33mcommit f236b4f39563f753ea2233c85460b958096a73c9[m
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Tue Oct 29 18:23:54 2024 -0700
+
+    First Version CRUD Empresas and Create New APP Administrador
+
+[33mcommit 9295df3777bbd614813c7b2501b8d1fcd3bf0990[m
+Author: Ramos Portillo Cesar <l21212033@tijuana.tecnm.mx>
+Date:   Thu Oct 24 18:18:08 2024 -0700
+
+    C-24.10.24
+
+[33mcommit 02ba208c3ef8fc799b0591b2b79bc117f2bfdc6d[m
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Wed Oct 23 17:23:18 2024 -0700
+
+    CRUD Status Created
+
+[33mcommit 6bc80ca1195640502d823ecbff0a707d656163a7[m
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Wed Oct 23 17:07:47 2024 -0700
+
+    LogIn and SignUp Update
+
+[33mcommit d3ae80704c5b107f1b5c02b99de3c97dff7657e2[m
+Merge: 18b199b d00b28c
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Tue Oct 22 19:25:02 2024 -0700
+
+    Merge pull request #2 from JorgeGutierrez-TEC/CorrecionBootstrap
+    
+    Fixed LogIn and SignUp
+
+[33mcommit d00b28cfb315035bec3b0567806a60049338f176[m[33m ([m[1;31morigin/CorrecionBootstrap[m[33m)[m
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Tue Oct 22 19:11:30 2024 -0700
+
+    LogIn and SigUp Fixed
+
+[33mcommit 18b199b790c97e364259d179c912edf945c867f3[m
+Author: Ramos Portillo Cesar <143043308+Cesar21212033@users.noreply.github.com>
+Date:   Fri Oct 18 20:10:49 2024 -0700
+
+    18-10-2024
+    
+    Base de datos
+
+[33mcommit 5c8d09edcc1b342cea1e1f3b631769b8c296d076[m
+Author: Ramos Portillo Cesar <l21212033@tijuana.tecnm.mx>
+Date:   Thu Oct 17 20:41:30 2024 -0700
+
+    Intento de login con credenciales en el backend
+
+[33mcommit f6d57d6233724c6d652c3e5f641d9e5769767c80[m
+Author: AAngel777 <l21211948@tectijuana.edu.mx>
+Date:   Sat Oct 12 11:31:00 2024 -0700
+
+    Se corrigio que no cargara bootsrap y archivos css
+
+[33mcommit 6db465b0e43faac78b5da88587a1266498720c38[m
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Sat Oct 5 19:16:09 2024 -0700
+
+    first change
+
+[33mcommit 082c18dc3b05aca74b7a94a7f204d4d8af0c2533[m
+Author: Jorge Gutierrez Pascual <158111129+JorgeGutierrez-TEC@users.noreply.github.com>
+Date:   Fri Oct 4 18:39:38 2024 -0700
+
+    Primer Commit
