@@ -14,6 +14,7 @@
                 <th>Marca</th>
                 <th>Fecha de Adquisición</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,13 @@
                 <td>{{ maquinaria.marca }}</td>
                 <td>{{ maquinaria.fecha_adquisicion }}</td>
                 <td>{{ maquinaria.estado }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'maquinaria:ver_maquinaria' maquinaria.id_maquinaria %}" class="btn btn-light me-2">Detalles</a>
+                        <a href="{% url 'maquinaria:actualizar_maquinaria' maquinaria.id_maquinaria %}" class="btn btn-secondary me-2">Actualizar</a>
+                        <a href="{% url 'maquinaria:eliminar_maquinaria' maquinaria.id_maquinaria %}" class="btn btn-dark" onclick="return confirm('¿Estás seguro de eliminar esta maquinaria?');">Eliminar</a>
+                    </div>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
