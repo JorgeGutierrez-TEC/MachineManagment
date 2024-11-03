@@ -16,7 +16,7 @@ class MaquinariaView(generic.View):
         form = MaquinariaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('maquinaria:maquinaria')  # Redirige a la misma vista o a otra que desees
+            return redirect('maquinaria:maquinaria_list')  # Redirige a la lista de maquinarias
         else:
             print(form.errors)  # Imprime los errores si el formulario no es válido
         return render(request, self.template_name, {'form': form})
