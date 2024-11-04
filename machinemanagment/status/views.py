@@ -4,6 +4,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import Estatus as Status
 from .forms import StatusForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from .models import Ganancias, Reparaciones
+from django.db.models import Sum
+from datetime import datetime
 
 # Create
 class CreateStatus(LoginRequiredMixin, generic.CreateView):
@@ -58,3 +62,25 @@ class DeleteStatus(LoginRequiredMixin, generic.DeleteView):
         status.is_deleted = True  # Cambiar is_deleted a True en lugar de eliminar el objeto
         status.save()
         return redirect(self.success_url)
+
+from datetime import datetime
+from django.shortcuts import render
+from django.db.models import Sum
+from .models import Ganancias, Reparaciones  # Asegúrate de que estos modelos estén importados correctamente
+
+def graficas_view(request):
+    # Datos de ganancias
+    ganancias = Ganancias.objects.values('fecha').annotate(total_ingresos=Sum('ingresos')).order_by('fecha')
+    fechas_ganancias = [g['fecha'].strftime('%Y-%m-%d') for g in ganancias]
+    ingresos = [g['total_ingresos'] for g in ganancias]
+
+    # Datos de reparaciones del mes actual
+    inicio_mes = datetime.now().replace(day=1)
+    reparaciones = Reparaciones.objects.filter(fecha_reparacion__gte=inicio_mes).count()  # Cambiado a 'fecha_reparacion'
+
+    context = {
+        'fechas_ganancias': fechas_ganancias,
+        'ingresos': ingresos,
+        'reparaciones': reparaciones,
+    }
+    return render(request, 'status/graficas.html', context)

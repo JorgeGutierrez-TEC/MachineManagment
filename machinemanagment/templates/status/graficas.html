@@ -1,0 +1,64 @@
+{% extends "base/base.html" %}
+
+{% block title %}Gráficas{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Gráfica de Ganancias</h2>
+    <canvas id="gananciasChart" width="400" height="200"></canvas>
+
+    <h2>Reparaciones del Mes</h2>
+    <canvas id="reparacionesChart" width="400" height="200"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Gráfica de Ganancias
+    const ctxGanancias = document.getElementById('gananciasChart').getContext('2d');
+    const gananciasChart = new Chart(ctxGanancias, {
+        type: 'line', // Cambia el tipo de gráfico según sea necesario
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'], // Ejemplo de etiquetas
+            datasets: [{
+                label: 'Ganancias',
+                data: [1200, 1900, 3000, 500, 2400], // Ejemplo de datos
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Gráfica de Reparaciones del Mes
+    const ctxReparaciones = document.getElementById('reparacionesChart').getContext('2d');
+    const reparacionesChart = new Chart(ctxReparaciones, {
+        type: 'bar', // Cambia el tipo de gráfico según sea necesario
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'], // Ejemplo de etiquetas
+            datasets: [{
+                label: 'Reparaciones',
+                data: [5, 10, 15, 20, 25], // Ejemplo de datos
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock content %}

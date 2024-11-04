@@ -5,7 +5,13 @@
 
 {% block content %}
 <div class="container">
-    <h1>Maquinaria Description</h1>
-    <p>Bienvenido a la sección de Maquinaria.</p>
+    <h2>Agregar maquinaria</h2>
+    {{error}}
+    <form action = "" method ="POST">
+        {% csrf_token %}
+        {{form}}
+        <button>Save</button>
+    </form>
+
 </div>
 {% endblock content  %}
