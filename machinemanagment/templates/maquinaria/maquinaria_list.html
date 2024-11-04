@@ -5,6 +5,12 @@
 {% block content %}
 <div class="container">
     <h2>Lista de Maquinaria</h2>
+    
+    <!-- Botón para agregar nueva maquinaria -->
+    <div class="mb-3">
+        <a href="{% url 'maquinaria:maquinaria' %}" class="btn btn-dark">Agregar Maquinaria</a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
