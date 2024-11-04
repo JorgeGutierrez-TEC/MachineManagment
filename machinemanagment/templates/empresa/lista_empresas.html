@@ -16,7 +16,7 @@
                 <th>Nombre de Empresa</th>
                 <th>Ubicación</th>
                 <th>RFC</th>
-                <th>Estado</th>
+                <!-- <th>Estado</th> -->
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -26,7 +26,7 @@
                     <td>{{ empresa.nombre_empresa }}</td>
                     <td>{{ empresa.ubicacion_empresa }}</td>
                     <td>{{ empresa.RFC }}</td>
-                    <td>{{ empresa.estado }}</td>
+                    <!-- <td>{{ empresa.estado }}</td> -->
                     <td>
                         <a href="{% url 'empresa:detalle_empresa' empresa.pk %}" class="btn btn-outline-info btn-sm btn-rounded">Ver Detalles</a>
                         <a href="{% url 'empresa:actualizar_empresa' empresa.pk %}" class="btn btn-outline-warning btn-sm btn-rounded">Editar</a>

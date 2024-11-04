@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Maquinaria{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Maquinaria</h2>
+    
+    <!-- Botón para agregar nueva maquinaria -->
+    <div class="mb-3">
+        <a href="{% url 'maquinaria:maquinaria' %}" class="btn btn-dark">Agregar Maquinaria</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Fecha de Adquisición</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maquinaria in maquinarias %}
+            <tr>
+                <td>{{ maquinaria.id_maquinaria }}</td>
+                <td>{{ maquinaria.nombre_maquinaria }}</td>
+                <td>{{ maquinaria.modelo }}</td>
+                <td>{{ maquinaria.marca }}</td>
+                <td>{{ maquinaria.fecha_adquisicion }}</td>
+                <td>{{ maquinaria.estado }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'maquinaria:ver_maquinaria' maquinaria.id_maquinaria %}" class="btn btn-light me-2">Detalles</a>
+                        <a href="{% url 'maquinaria:actualizar_maquinaria' maquinaria.id_maquinaria %}" class="btn btn-secondary me-2">Actualizar</a>
+                        <a href="{% url 'maquinaria:eliminar_maquinaria' maquinaria.id_maquinaria %}" class="btn btn-dark" onclick="return confirm('¿Estás seguro de eliminar esta maquinaria?');">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
