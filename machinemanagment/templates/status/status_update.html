@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+
+{% block title %}Update Status{% endblock title %}
+
+{% block content %}
+    <h2>Update Status: {{ status.name }}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  {# Renderiza el formulario en párrafos #}
+        <button type="submit" class="btn btn-outline-success form-control">Update Status</button>
+        <a href="{% url 'status:status_list' %}" class="btn btn-outline-warning form-control">Cancel</a>
+    </form>
+{% endblock content %}

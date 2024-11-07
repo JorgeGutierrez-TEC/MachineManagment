@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+
+{% block title %}Status List{% endblock title %}
+
+{% block content %}
+    <h2>Status List</h2>
+    <a href="{% url 'status:status_create' %}" class="btn btn-outline-primary mb-3">Create New Status</a>
+    
+    {% if statuses %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for status in statuses %}
+                    <tr>
+                        <td>{{ status.id }}</td>
+                        <td>{{ status.name }}</td>
+                        <td>{{ status.description }}</td>
+                        <td>{% if status.is_active %}Yes{% else %}No{% endif %}</td>
+                        <td>
+                            <a href="{% url 'status:status_detail' status.id %}" class="btn btn-outline-info btn-sm">View</a>
+                            <a href="{% url 'status:status_update' status.id %}" class="btn btn-outline-warning btn-sm">Edit</a>
+                            <a href="{% url 'status:status_delete' status.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No statuses found.</p>
+    {% endif %}
+{% endblock content %}

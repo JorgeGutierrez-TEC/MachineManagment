@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block title %}Maquinaria{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <h2>Agregar maquinaria</h2>
+    {{error}}
+    <form action = "" method ="POST">
+        {% csrf_token %}
+        {{form}}
+        <button>Save</button>
+    </form>
+
+</div>
+{% endblock content  %}
