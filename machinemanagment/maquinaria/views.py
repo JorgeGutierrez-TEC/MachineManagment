@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
-from .forms import MaquinariaForm, MantenimientoForm, TipoMantenimientoForm
-from .models import Maquinaria, Mantenimientos, TipoMantenimiento
+from .forms import MaquinariaForm, MantenimientoForm, TipoMantenimientoForm, PiezasMantenimientoForm
+from .models import Maquinaria, Mantenimientos, TipoMantenimiento, PiezasMantenimiento, DetallemaquinariaEmpresa
 from django.urls import reverse_lazy
 from django.db import transaction
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -99,3 +99,32 @@ class EliminarMantenimiento(LoginRequiredMixin, generic.DeleteView):
     login_url = "home:index"
 
 
+class AñadirPiezaMantenimiento(generic.CreateView):
+    model = PiezasMantenimiento
+    form_class = PiezasMantenimientoForm
+    template_name = 'maquinaria/añadir_pieza.html'
+    success_url = reverse_lazy("maquinaria:lista_piezasmante")
+    login_url = "home:index"
+
+class ListaPiezasMantenimiento(LoginRequiredMixin, generic.ListView):
+    model = PiezasMantenimiento
+    template_name = 'maquinaria/lista_piezasmante.html'
+    login_url = "home:index"
+
+class EditarPiezasMantenimiento(LoginRequiredMixin, generic.UpdateView):
+    model = Mantenimientos
+    form_class = MantenimientoForm
+    template_name = 'maquinaria/editar_piezas.html'
+    success_url = reverse_lazy('maquinaria:lista_piezasmante')
+    login_url = "home:index"
+
+class EliminarPiezasMantenimiento(LoginRequiredMixin, generic.DeleteView):
+    model = Mantenimientos
+    template_name = 'maquinaria/eliminar_piezas.html'
+    success_url = reverse_lazy('maquinaria:lista_piezasmante')
+    login_url = "home:index"
+
+class listaDetalles(LoginRequiredMixin, generic.ListView):
+    model = DetallemaquinariaEmpresa
+    template_name = 'maquinaria/lista_detalleMante.html'
+    login_url = "home:index"

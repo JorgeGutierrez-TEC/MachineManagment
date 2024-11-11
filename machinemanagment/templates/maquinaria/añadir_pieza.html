@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Añadir piezas mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Añadir piezas mantenimiento</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success btn-lg">Añadir</button>
+    </form>
+{% endblock content %}

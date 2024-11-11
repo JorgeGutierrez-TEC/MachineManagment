@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Maquinaria, Mantenimientos, TipoMantenimiento
+from .models import Maquinaria, Mantenimientos, TipoMantenimiento, PiezasMantenimiento
 
 
 class MaquinariaForm(ModelForm):
@@ -16,3 +16,8 @@ class TipoMantenimientoForm(ModelForm):
     class Meta:
         model = TipoMantenimiento
         fields = ('nombre_tipo_mantenimiento', 'descripcion', 'precio', 'fecha_servicio')
+    
+class PiezasMantenimientoForm(ModelForm):
+    class Meta:
+        model = PiezasMantenimiento
+        fields = ['id_mantenimiento', 'id_pieza', 'cantidad_usada']

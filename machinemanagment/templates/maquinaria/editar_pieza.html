@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Editar pieza mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Editar pieza mantenimiento</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-warning btn-lg">Aceptar</button>
+    </form>
+{% endblock content %}

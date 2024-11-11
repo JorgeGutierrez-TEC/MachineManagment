@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Lista de Piezas mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Lista de Piezas mantenimiento</h2>
+
+    <form action="{% url 'maquinaria:añadir_piezas' %}">
+        <button type="submit" class="btn btn-outline-success mb-3">Añadir piezas</button>
+    </form>
+
+    {% if object_list %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mantenimiento</th>
+                <th>ID pieza</th>
+                <th>Cantidad uso</th>              
+            </tr>
+        </thead>
+        <tbody>
+            {% for piezas in object_list %}
+                <tr>
+                    <td>{{ piezas.id_mantenimiento }}</td>   <!--.nombre_empresa-->
+                    <td>{{ piezas.id_pieza.nombre_pieza }}</td>   <!--.nombre_maquinaria-->
+                    <td>{{ piezas.cantidad_usada }}</td>
+                    <td>
+                        <a href="{% url 'maquinaria:editar_pieza' piezas.pk %}" class="btn btn-outline-warning btn-sm mb-3">Editar</a>
+                        <a href="{% url 'maquinaria:eliminar_pieza' piezas.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No se encontraron piezas.</p>
+{% endif %}
+{% endblock content %}

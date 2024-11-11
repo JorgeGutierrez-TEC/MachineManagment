@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Detalles Mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Detalles Mantenimiento</h2>
+
+    {% if object_list %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Empresa</th>
+                <th>Maquinaria</th>              
+            </tr>
+        </thead>
+        <tbody>
+            {% for detalle in object_list %}
+                <tr>
+                    <td>{{ detalle.id_detalle_maquinaria_empresa }}</td>   <!--.nombre_empresa-->
+                    <td>{{ detalle.id_empresa.nombre_empresa }}</td>   <!--.nombre_maquinaria-->
+                    <td>{{ detalle.id_maquinaria }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No se encontraron registros.</p>
+{% endif %}
+{% endblock content %}
