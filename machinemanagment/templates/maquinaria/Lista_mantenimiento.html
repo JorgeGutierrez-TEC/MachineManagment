@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Lista de Mantenimientos{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Lista de Mantenimientos</h2>
+
+    <form action="{% url 'maquinaria:crear_mantenimiento' %}">
+        <button type="submit" class="btn btn-outline-success mb-3">Agregar Mantenimiento</button>
+    </form>
+
+    {% if object_list %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>Maquinaria</th>
+                <th>Tipo de Mantenimiento</th>
+                <th>Responsable</th>
+                <th>Fecha Programada</th>
+                <th>Fecha Realización</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Mantenimiento in object_list %}
+                <tr>
+                    <td>{{ Mantenimiento.id_empresa }}</td>   <!--.nombre_empresa-->
+                    <td>{{ Mantenimiento.id_maquinaria }}</td>   <!--.nombre_maquinaria-->
+                    <td>{{ Mantenimiento.id_tipo_mantenimiento.nombre_tipo_mantenimiento }}</td>
+                    <td>{{ Mantenimiento.responsable_mantenimiento }}</td> <!--.nombre_empleado-->
+                    <td>{{ Mantenimiento.fecha_programada }}</td>
+                    <td>{{ Mantenimiento.fecha_realizacion }}</td>
+                    <td>{{ Mantenimiento.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'maquinaria:actualizar_mantenimiento' Mantenimiento.pk %}" class="btn btn-outline-warning btn-sm mb-3">Actualizar</a>
+                        <a href="{% url 'maquinaria:eliminar_mantenimiento' Mantenimiento.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No se encontraron mantenimientos.</p>
+{% endif %}
+{% endblock content %}

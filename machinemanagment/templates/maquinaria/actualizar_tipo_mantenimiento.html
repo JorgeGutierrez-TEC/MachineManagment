@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Actualizar Tipo de Mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Actualizar Tipo Mantenimiento</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-warning btn-lg">Actualizar</button>
+    </form>
+{% endblock content %}
