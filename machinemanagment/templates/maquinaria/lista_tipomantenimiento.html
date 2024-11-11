@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Lista de Tipos de Mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Lista Tipo de Mantenimientos</h2>
+    <form action="{% url 'maquinaria:crear_tipo_mantenimiento' %}">
+        <button type="submit" class="btn btn-outline-primary mt-3 mb-3">Agregar Tipo de Mantenimiento</button>
+    </form>
+    
+    {% if object_list %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Fecha de Servicio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo_mantenimiento in object_list %}
+                <tr>
+                    <td>{{ tipo_mantenimiento.nombre_tipo_mantenimiento }}</td>
+                    <td>{{ tipo_mantenimiento.descripcion }}</td>
+                    <td>{{ tipo_mantenimiento.precio }}</td>
+                    <td>{{ tipo_mantenimiento.fecha_servicio }}</td>
+                    <td>
+                        <a href="{% url 'maquinaria:actualizar_tipo_mantenimiento' tipo_mantenimiento.pk %}" class="btn btn-outline-warning btn-sm">Actualizar</a>
+                        <a href="{% url 'maquinaria:eliminar_tipo_mantenimiento' tipo_mantenimiento.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No se encontraron tipos de mantenimiento.</p>
+{% endif %}
+{% endblock content %}

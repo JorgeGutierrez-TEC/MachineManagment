@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Eliminar Tipo de Mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Eliminar Tipo Mantenimiento</h2>
+    <p>¿Está seguro de eliminar el tipo de mantenimiento {{ object.id_tipo_mantenimiento }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-warning btn-lg">Eliminar</button>
+    </form>
+{% endblock content %}

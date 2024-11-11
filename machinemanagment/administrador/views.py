@@ -4,7 +4,7 @@ from django.views import generic
 
 
 class administrador(generic.View):
-    template_name = "administrador/administrador.html"
+    template_name = "administrador/Areas.html"
     context = {}
 
     def get(self, request):

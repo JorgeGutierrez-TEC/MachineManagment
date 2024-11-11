@@ -24,21 +24,58 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'empresa:lista_empresas' %}">Empresa</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'maquinaria:maquinaria_list' %}">Maquinaria</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'inventario:inventario' %}">Inventario</a>
-                  </li>
+
+                  <!-- Menú desplegable para Mantenimiento -->
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Maquinaria
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'maquinaria:maquinaria_list' %}">Maquinaria</a></li>
+                    <li><a class="dropdown-item" href="{% url 'maquinaria:lista_tipomantenimiento' %}">Tipos de Mantenimiento</a></li>
+                    <li><a class="dropdown-item" href="{% url 'maquinaria:Lista_mantenimiento' %}">Mantenimientos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'maquinaria:lista_detalleMante' %}"> Detalles Mantenimiento</a></li>
+                  </ul>
+                </li>
+
+                          <!-- Menú desplegable para Mantenimiento -->
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Inventario
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'inventario:lista_inventario' %}">Inventario Piezas</a></li>
+                    <li><a class="dropdown-item" href="{% url 'inventario:lista_piezas' %}">Piezas</a></li>
+                    <li><a class="dropdown-item" href="{% url 'inventario:lista_proveedor' %}">Proveedor Piezas</a></li>
+                  </ul>
+                </li>
+
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'empleados:empleados' %}">Empleados</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'status:status_list' %}">Status</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'administrador:administrador' %}">Admin</a>
-                  </li>
+                          <!-- Menú desplegable para Mantenimiento -->
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Estatus
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'status:status_graficas' %}">Graficas</a></li>
+                    <li><a class="dropdown-item" href="{% url 'status:status_list' %}"> Lista Estatus</a></li>
+                  </ul>
+                </li>
+
+
+                          <!-- Menú desplegable para Mantenimiento -->
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Administrador
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'administrador:Areas' %}">Areas</a></li>
+                  </ul>
+                </li>
+
+                  
                 </ul>
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

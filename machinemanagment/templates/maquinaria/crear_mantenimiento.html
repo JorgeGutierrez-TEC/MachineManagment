@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Crear Mantenimiento{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Crear Mantenimiento</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success btn-lg">Crear</button>
+    </form>
+{% endblock content %}
