@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+
+{% block title %}Detalles de Empleado{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Detalles de Empleado</h2>
+    <ul>
+        <li>ID: {{ empleado.id_empleado }}</li>
+        <li>Nombre: {{ empleado.nombre_empleado }}</li>
+        <li>Apellido Paterno: {{ empleado.apellidopaterno_empleado }}</li>
+        <li>Apellido Materno: {{ empleado.apellidomaterno_empleado }}</li>
+        <li>Teléfono: {{ empleado.telefono }}</li>
+        <li>Correo: {{ empleado.correo }}</li>
+    </ul>
+    <a href="{% url 'empleados:empleado_list' %}" class="btn btn-secondary">Regresar a la lista</a>
+</div>
+{% endblock content %}

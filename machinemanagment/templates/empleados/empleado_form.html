@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block title %}Actualizar Empleado{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Actualizar Empleado</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <a href="{% url 'empleados:empleado_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock content %}
