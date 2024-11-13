@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Empleados{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Empleados</h2>
+    
+    <!-- Botón para agregar nuevo empleado -->
+    <div class="mb-3">
+        <a href="{% url 'empleados:empleados' %}" class="btn btn-dark">Agregar Empleado</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleado in empleados %}
+            <tr>
+                <td>{{ empleado.id_empleado }}</td>
+                <td>{{ empleado.nombre_empleado }}</td>
+                <td>{{ empleado.apellidopaterno_empleado }}</td>
+                <td>{{ empleado.apellidomaterno_empleado }}</td>
+                <td>{{ empleado.telefono }}</td>
+                <td>{{ empleado.correo }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'empleados:ver_empleado' empleado.id_empleado %}" class="btn btn-light me-2">Detalles</a>
+                        <a href="{% url 'empleados:actualizar_empleado' empleado.id_empleado %}" class="btn btn-secondary me-2">Actualizar</a>
+                        <a href="{% url 'empleados:eliminar_empleado' empleado.id_empleado %}" class="btn btn-dark" onclick="return confirm('¿Estás seguro de eliminar este empleado?');">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
