@@ -1,13 +1,15 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, get_object_or_404
-from .models import Status
-from .forms import StatusForm
+from .models import Status, BancoEm
+from .forms import StatusForm, BancoForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from .models import Ganancias, Reparaciones
 from django.db.models import Sum
 from datetime import datetime
+from django.shortcuts import redirect
+
 
 # Create
 class CreateStatus(LoginRequiredMixin, generic.CreateView):
@@ -84,3 +86,42 @@ def graficas_view(request):
         'reparaciones': reparaciones,
     }
     return render(request, 'status/graficas.html', context)
+#Banco
+class BancoView(generic.View):
+    template_name = "status/banco.html"
+    
+    def get(self, request):
+        form = BancoForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = BancoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('status:banco')  
+        else:
+            print(form.errors)  # Imprime los errores si el formulario no es válido
+        return render(request, self.template_name, {'form': form})
+
+class BancoListView(generic.ListView):
+    model = BancoEm
+    template_name = "status/bancoem_list.html"
+    context_object_name = "bancos"
+
+class BancoDetailView(generic.DetailView):
+    model = BancoEm
+    template_name = "status/banco_detail.html"
+    context_object_name = "banco"
+
+class BancoUpdateView(generic.UpdateView):
+    model = BancoEm
+    form_class = BancoForm
+    template_name = "status/banco_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy('status:bancoem_list')
+
+class BancoDeleteView(generic.DeleteView):
+    model = BancoEm
+    template_name = "status/banco_confirm_delete.html"
+    success_url = reverse_lazy('status:bancoem_list')

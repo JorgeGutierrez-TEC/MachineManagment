@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Bancos{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Bancos</h2>
+    
+    <!-- Botón para agregar un nuevo banco -->
+    <div class="mb-3">
+        <a href="{% url 'status:banco' %}" class="btn btn-dark">Agregar Banco</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Banco</th>
+                <th>Dinero</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for banco in bancos %}
+            <tr>
+                <td>{{ banco.id_banco }}</td>
+                <td>{{ banco.dinero }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'status:ver_banco' banco.id_banco %}" class="btn btn-light me-2">Detalles</a>
+                        <a href="{% url 'status:actualizar_banco' banco.id_banco %}" class="btn btn-secondary me-2">Actualizar</a>
+                        <a href="{% url 'status:eliminar_banco' banco.id_banco %}" class="btn btn-dark" onclick="return confirm('¿Estás seguro de eliminar este banco?');">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
