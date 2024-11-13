@@ -6,7 +6,7 @@ from .forms import EmpleadoForm
 
 # Vista para la creación de un empleado
 class EmpleadosView(generic.View):
-    template_name = "empleados/empleado.html"
+    template_name = "empleados/empleados.html"
 
     def get(self, request):
         form = EmpleadoForm()
