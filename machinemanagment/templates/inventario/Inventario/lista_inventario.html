@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Inventario{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Inventario de Piezas</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Inventario</th>
+                <th>Pieza</th>
+                <th>Cantidad en Stock</th>
+                <th>Fecha de Entrada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inventario in Inventario %}
+            <tr>
+                <td>{{ inventario.id_inventario }}</td>
+                <td>{{ inventario.id_pieza.nombre_pieza }}</td>
+                <td>{{ inventario.cantidad_stock_piezas }}</td>
+                <td>{{ inventario.fecha_entrada }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'inventario:detalle_inventario' inventario.id_inventario %}" class="btn btn-light me-2">Ver detalles</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

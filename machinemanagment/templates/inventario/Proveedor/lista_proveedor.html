@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Lista de Proveedores de Piezas{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Proveedores de Piezas</h2>
+    <a href="{% url 'inventario:agregar_proveedor_pieza' %}" class="btn btn-dark mb-3">Agregar nuevo proveedor</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Empresa</th>
+                <th>RFC</th>
+                <th>Fecha de Registro</th>
+                <th>Tipo de Moneda de Pago</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedores %}
+            <tr>
+                <td>{{ proveedor.id_proveedor_piezas }}</td>
+                <td>{{ proveedor.nombre_empresa }}</td>
+                <td>{{ proveedor.rfc }}</td>
+                <td>{{ proveedor.fecha_registro }}</td>
+                <td>{{ proveedor.tipo_moneda_pago }}</td>
+                <td>
+                    <a href="{% url 'inventario:detalle_proveedor_pieza' proveedor.id_proveedor_piezas %}" class="btn btn-light">Detalles</a>
+                    <a href="{% url 'inventario:actualizar_proveedor_pieza' proveedor.id_proveedor_piezas %}" class="btn btn-primary">Modificar</a>
+                    <a href="{% url 'inventario:eliminar_proveedor_pieza' proveedor.id_proveedor_piezas %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este proveedor?');">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No hay proveedores registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

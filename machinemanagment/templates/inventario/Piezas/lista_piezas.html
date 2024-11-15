@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Piezas{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Piezas</h2>
+    
+    <!-- Botón para agregar nueva pieza -->
+    <div class="mb-3">
+        <a href="{% url 'inventario:agregar_pieza' %}" class="btn btn-dark">Agregar Pieza</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pieza in piezas %}
+            <tr>
+                <td>{{ pieza.id_pieza }}</td>
+                <td>{{ pieza.nombre_pieza }}</td>
+                <td>{{ pieza.precio }}</td>
+                <td>{{ pieza.descripcion }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'inventario:detalle_pieza' pieza.id_pieza %}" class="btn btn-light me-2">Detalles</a>
+                        <a href="{% url 'inventario:actualizar_pieza' pieza.id_pieza %}" class="btn btn-secondary me-2">Actualizar</a>
+                        <a href="{% url 'inventario:eliminar_pieza' pieza.id_pieza %}" class="btn btn-dark" onclick="return confirm('¿Estás seguro de eliminar esta pieza?');">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <p>Total de piezas: {{ piezas.count }}</p>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

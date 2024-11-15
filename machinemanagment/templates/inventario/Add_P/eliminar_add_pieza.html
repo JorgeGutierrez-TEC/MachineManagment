@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Eliminar pieza de stock{% endblock title %}
+
+{% block content %}
+<h2 class="my-4">Eliminar pieza de stock</h2>
+
+<!-- Mostrar confirmación de eliminación con la información de la pieza relacionada -->
+<p>¿Está seguro de eliminar el registro de la pieza: <strong>{{ object.id_pieza.nombre_pieza }}</strong>?</p>
+<p>Descripción: {{ object.descripcion_pieza }}</p>
+<p>Cantidad: {{ object.cantidad_piezas }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-warning btn-lg">Eliminar</button>
+</form>
+
+{% endblock content %}
