@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, get_object_or_404
-from .models import Status, BancoEm
-from .forms import StatusForm, BancoForm
+from .models import Status, BancoEm, Reparaciones
+from .forms import StatusForm, BancoForm, ReparacionesForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from .models import Ganancias, Reparaciones
@@ -125,3 +125,43 @@ class BancoDeleteView(generic.DeleteView):
     model = BancoEm
     template_name = "status/banco_confirm_delete.html"
     success_url = reverse_lazy('status:bancoem_list')
+
+class ReparacionesView(generic.View):
+    template_name = "status/reparaciones.html"
+    
+    def get(self, request):
+        form = ReparacionesForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = ReparacionesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('status:reparaciones')  
+        else:
+            print(form.errors)  # Imprime los errores si el formulario no es válido
+        return render(request, self.template_name, {'form': form})
+
+
+class ReparacionesListView(generic.ListView):
+    model = Reparaciones
+    template_name = "status/reparaciones_list.html"
+    context_object_name = "reparaciones"
+
+class ReparacionesDetailView(generic.DetailView):
+    model = Reparaciones
+    template_name = "status/reparaciones_detail.html"
+    context_object_name = "reparaciones"
+
+class ReparacionesUpdateView(generic.UpdateView):
+    model = Reparaciones
+    form_class = ReparacionesForm
+    template_name = "status/reparaciones_form.html"
+    
+    def get_success_url(self):
+        return reverse_lazy('status:repaciones_list')
+
+class ReparacionesDeleteView(generic.DeleteView):
+    model = Reparaciones
+    template_name = "status/reparaciones_confirm_delete.html"
+    success_url = reverse_lazy('status:reparaciones_list')

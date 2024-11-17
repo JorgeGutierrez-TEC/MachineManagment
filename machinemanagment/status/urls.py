@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CreateStatus, ListStatus, DetailStatus, UpdateStatus, DeleteStatus, graficas_view, BancoView, BancoListView, BancoDetailView, BancoUpdateView, BancoDeleteView
+from .views import CreateStatus, ListStatus, DetailStatus, UpdateStatus, DeleteStatus, graficas_view, BancoView, BancoListView, BancoDetailView, BancoUpdateView, BancoDeleteView, ReparacionesView, ReparacionesListView, ReparacionesDetailView, ReparacionesUpdateView, ReparacionesDeleteView
 
 
 
@@ -18,6 +18,12 @@ urlpatterns = [
     path('<int:pk>/detalles/', BancoDetailView.as_view(), name='ver_banco'),
     path('<int:pk>/editar/', BancoUpdateView.as_view(), name='actualizar_banco'),
     path('<int:pk>/eliminar/', BancoDeleteView.as_view(), name='eliminar_banco'),
+
+    path('reparaciones/create/', ReparacionesView.as_view(), name='reparaciones'),
+    path('reparaciones/lista/', ReparacionesListView.as_view(), name='reparaciones_list'),
+    path('reparaciones/detalles/<int:pk>/', ReparacionesDetailView.as_view(), name='ver_reparaciones'),
+    path('reparaciones/editar/<int:pk>/', ReparacionesUpdateView.as_view(), name='actualizar_reparaciones'),
+    path('reparaciones/eliminar<int:pk>/', ReparacionesDeleteView.as_view(), name='eliminar_reparaciones'),
 
     
 ]
