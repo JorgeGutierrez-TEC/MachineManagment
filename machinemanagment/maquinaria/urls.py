@@ -21,7 +21,7 @@ urlpatterns = [
 
     path('pieza/añadir/', views.AñadirPiezaMantenimiento.as_view(), name='añadir_pieza'),
     path('pieza/lista/', views.ListaPiezasMantenimiento.as_view(), name='lista_piezasmante'),
-    path('piezas/actualieditarzar/<int:pk>/', views.EditarPiezasMantenimiento.as_view(), name='editar_piezas'),
+    path('piezas/editar/<int:pk>/', views.EditarPiezasMantenimiento.as_view(), name='editar_pieza'),
     path('piezas/eliminar/<int:pk>/', views.EliminarPiezasMantenimiento.as_view(), name='eliminar_piezas'),
 
     path('detalle/lista/', views.listaDetalles.as_view(), name='lista_detalleMante'),
