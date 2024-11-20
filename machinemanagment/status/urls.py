@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import CreateStatus, ListStatus, DetailStatus, UpdateStatus, DeleteStatus, graficas_view, BancoView, BancoListView, BancoDetailView, BancoUpdateView, BancoDeleteView, ReparacionesView, ReparacionesListView, ReparacionesDetailView, ReparacionesUpdateView, ReparacionesDeleteView
-
+from .views import CreateStatus, ListStatus, DetailStatus, UpdateStatus, DeleteStatus, graficas_view, BancoView, BancoListView, BancoDetailView, BancoUpdateView, BancoDeleteView, ReparacionesView, ReparacionesListView, ReparacionesDetailView, ReparacionesUpdateView, ReparacionesDeleteView, HistorialMaquinasView, HistorialMaquinasListView, HistorialMaquinasDetailView, HistorialMaquinasUpdateView, HistorialMaquinasDeleteView
 
 
 app_name = 'status'
@@ -25,5 +24,9 @@ urlpatterns = [
     path('reparaciones/editar/<int:pk>/', ReparacionesUpdateView.as_view(), name='actualizar_reparaciones'),
     path('reparaciones/eliminar<int:pk>/', ReparacionesDeleteView.as_view(), name='eliminar_reparaciones'),
 
-    
+    path('HistorialMaquinas/create/', HistorialMaquinasView.as_view(), name='historial_maquinas'),
+    path('HistorialMaquinas/lista/', HistorialMaquinasListView.as_view(), name='historial_maquinas_list'),
+    path('HistorialMaquinas/detalles/<int:pk>/', HistorialMaquinasDetailView.as_view(), name='ver_historial'),
+    path('HistorialMaquinas/editar/<int:pk>/', HistorialMaquinasUpdateView.as_view(), name='actualizar_historial'),
+    path('HistorialMaquinas/eliminar<int:pk>/', HistorialMaquinasDeleteView.as_view(), name='eliminar_historial'),
 ]

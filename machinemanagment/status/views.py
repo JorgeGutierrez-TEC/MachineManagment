@@ -1,11 +1,11 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, get_object_or_404
-from .models import Status, BancoEm, Reparaciones
-from .forms import StatusForm, BancoForm, ReparacionesForm
+from .models import Status, BancoEm, Reparaciones, HistorialMaquinas
+from .forms import StatusForm, BancoForm, ReparacionesForm, HistorialMaquinasform
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from .models import Ganancias, Reparaciones
+from .models import Ganancias, Reparaciones, HistorialMaquinas
 from django.db.models import Sum
 from datetime import datetime
 from django.shortcuts import redirect
@@ -165,3 +165,43 @@ class ReparacionesDeleteView(generic.DeleteView):
     model = Reparaciones
     template_name = "status/reparaciones_confirm_delete.html"
     success_url = reverse_lazy('status:reparaciones_list')
+
+class HistorialMaquinasView(generic.View):
+    template_name = "status/historial_maquinas.html"
+    
+    def get(self, request):
+        form = HistorialMaquinasform()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = HistorialMaquinasform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('status:historial_maquinas')  
+        else:
+            print(form.errors)  # Imprime los errores si el formulario no es válido
+        return render(request, self.template_name, {'form': form})
+
+
+class HistorialMaquinasListView(generic.ListView):
+    model = HistorialMaquinas
+    template_name = "status/historial_maquinas_list.html"
+    context_object_name = "historial_maquinas"
+
+class HistorialMaquinasDetailView(generic.DetailView):
+    model = HistorialMaquinas
+    template_name = "status/historial_maquinas_detail.html"
+    context_object_name = "historial_maquinas"
+
+class HistorialMaquinasUpdateView(generic.UpdateView):
+    model = HistorialMaquinas
+    form_class = HistorialMaquinasform
+    template_name = "status/historial_maquinas_form.html"
+    
+    def get_success_url(self):
+        return reverse_lazy('status:historial_maquinas_list')
+
+class HistorialMaquinasDeleteView(generic.DeleteView):
+    model = HistorialMaquinas
+    template_name = "status/historial_maquinas_confirm_delete.html"
+    success_url = reverse_lazy('status:historial_maquinas_list')

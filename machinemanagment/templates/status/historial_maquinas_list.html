@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+
+{% block title %}Historial de Máquinas{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Historial de Máquinas</h2>
+    
+    <!-- Botón para agregar un nuevo registro al historial -->
+    <div class="mb-3">
+        <a href="{% url 'status:historial_maquinas' %}" class="btn btn-dark">Agregar Historial</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Historial</th>
+                <th>Maquinaria</th>
+                <th>Tipo de Evento</th>
+                <th>Fecha del Evento</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for historial in historial_maquinas %}
+            <tr>
+                <td>{{ historial.id_historial }}</td>
+                <td>{{ historial.id_maquinaria }}</td>
+                <td>{{ historial.tipo_evento }}</td>
+                <td>{{ historial.fecha_evento }}</td>
+                <td>{{ historial.descripcion_evento }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'status:ver_historial' historial.id_historial %}" class="btn btn-light me-2">Detalles</a>
+                        <a href="{% url 'status:actualizar_historial' historial.id_historial %}" class="btn btn-secondary me-2">Actualizar</a>
+                        <a href="{% url 'status:eliminar_historial' historial.id_historial %}" class="btn btn-dark" onclick="return confirm('¿Estás seguro de eliminar este historial?');">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
