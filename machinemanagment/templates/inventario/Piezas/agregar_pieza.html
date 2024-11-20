@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Añadir piezas al inventario{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Añadir piezas al inventario</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success btn-lg">Añadir</button>
+    </form>
+</div>
+{% endblock content %}

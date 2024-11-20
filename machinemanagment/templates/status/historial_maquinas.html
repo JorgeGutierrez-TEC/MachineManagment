@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block title %}Historial de Maquinas{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <h2>Agregar Historial</h2>
+    {{error}}
+    <form action = "" method ="POST">
+        {% csrf_token %}
+        {{form}}
+        <button>Save</button>
+    </form>
+
+</div>
+{% endblock content  %}

@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+
+{% block title %}Lista de Reparaciones{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Lista de Reparaciones</h2>
+    
+    <!-- Botón para agregar una nueva reparación -->
+    <div class="mb-3">
+        <a href="{% url 'status:reparaciones' %}" class="btn btn-dark">Agregar Reparación</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Reparación</th>
+                <th>ID Maquinaria</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Costo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reparacion in reparaciones %}
+            <tr>
+                <td>{{ reparacion.id_reparacion }}</td>
+                <td>{{ reparacion.id_maquinaria }}</td>
+                <td>{{ reparacion.fecha_reparacion }}</td>
+                <td>{{ reparacion.descripcion }}</td>
+                <td>{{ reparacion.costo }}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="{% url 'status:ver_reparaciones' reparacion.id_reparacion %}" class="btn btn-light me-2">Detalles</a>
+                        <a href="{% url 'status:actualizar_reparaciones' reparacion.id_reparacion %}" class="btn btn-secondary me-2">Actualizar</a>
+                        <a href="{% url 'status:eliminar_reparaciones' reparacion.id_reparacion %}" class="btn btn-dark" onclick="return confirm('¿Estás seguro de eliminar esta reparación?');">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

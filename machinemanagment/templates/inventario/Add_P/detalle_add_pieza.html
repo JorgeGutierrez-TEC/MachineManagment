@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Detalles de adicion de Pieza{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Detalles de Adición de Pieza</h2>
+    <ul>
+        <li>ID de Adición: {{ add_pieza.id_add_pieza }}</li>
+        <li>ID de Pieza: {{ add_pieza.id_pieza.nombre_pieza }}</li> <!-- Muestra el nombre de la pieza relacionada -->
+        <li>ID de Proveedor: {{ add_pieza.id_proveedor.nombre_proveedor }}</li> <!-- Asegúrate de que el modelo ProveedorPiezas tenga un campo `nombre_proveedor` -->
+        <li>Cantidad: {{ add_pieza.cantidad_piezas }}</li>
+        <li>Descripción: {{ add_pieza.descripcion_pieza }}</li>
+    </ul>
+    <a href="{% url 'inventario:add_pieza' %}" class="btn btn-secondary">Regresar a la lista</a>
+</div>
+{% endblock content %}

@@ -114,7 +114,7 @@ class ListaPiezasMantenimiento(LoginRequiredMixin, generic.ListView):
 class EditarPiezasMantenimiento(LoginRequiredMixin, generic.UpdateView):
     model = Mantenimientos
     form_class = MantenimientoForm
-    template_name = 'maquinaria/editar_piezas.html'
+    template_name = 'maquinaria/editar_pieza.html'
     success_url = reverse_lazy('maquinaria:lista_piezasmante')
     login_url = "home:index"
 

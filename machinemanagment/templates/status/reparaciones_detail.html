@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block title %}Detalles de la Reparación{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Detalles de la Reparacion</h2>
+    <ul>
+        <li>ID Reparación: {{ reparaciones.id_reparacion }}</li>
+        <li>ID Maquinaria: {{ reparaciones.id_maquinaria }}</li>
+        <li>Fecha de Reparación: {{ reparaciones.fecha_reparacion }}</li>
+        <li>Descripción: {{ reparaciones.descripcion }}</li>
+        <li>Costo: {{ reparaciones.costo }}</li>
+    </ul>
+    <a href="{% url 'status:reparaciones_list' %}" class="btn btn-secondary">Regresar a la lista</a>
+</div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block title %}Detalles de Proveedor{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Detalles de Proveedor</h2>
+    <ul>
+        <li>ID: {{ proveedor.id_proveedor_piezas }}</li>
+        <li>Nombre de la Empresa: {{ proveedor.nombre_empresa }}</li>
+        <li>RFC: {{ proveedor.rfc }}</li>
+        <li>Fecha de Registro: {{ proveedor.fecha_registro }}</li>
+        <li>Tipo de Moneda de Pago: {{ proveedor.tipo_moneda_pago }}</li>
+    </ul>
+    <a href="{% url 'inventario:lista_proveedor' %}" class="btn btn-secondary">Regresar a la lista</a>
+</div>
+{% endblock content %}
