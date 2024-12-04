@@ -11,6 +11,8 @@ from datetime import datetime
 from django.shortcuts import redirect
 
 
+
+
 # Create
 class CreateStatus(LoginRequiredMixin, generic.CreateView):
     template_name = "status/status_create.html"

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import RedirectView
-
+from rest_framework.documentation import include_docs_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("home.urls")),
@@ -27,4 +27,7 @@ urlpatterns = [
     path('inventario/', include("inventario.urls")),
     path('status/', include("status.urls")),
     path('administrador/', include("administrador.urls")),
+    path('api/v1/', include('api.urls')),
+    path('docs/', include_docs_urls(title= 'Api Documentation'))
+    
 ]
