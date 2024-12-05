@@ -26,7 +26,7 @@
                     <td>{{ piezas.cantidad_usada }}</td>
                     <td>
                         <a href="{% url 'maquinaria:editar_pieza' piezas.pk %}" class="btn btn-outline-warning btn-sm mb-3">Editar</a>
-                        <a href="{% url 'maquinaria:eliminar_pieza' piezas.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                        <a href="{% url 'maquinaria:eliminar_piezas' piezas.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
                     </td>
                 </tr>
             {% endfor %}

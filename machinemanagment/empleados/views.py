@@ -3,9 +3,11 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .models import Empleados
 from .forms import EmpleadoForm  
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Vista para la creación de un empleado
-class EmpleadosView(generic.View):
+class EmpleadosView(PermissionRequiredMixin ,generic.View):
+    permission_required = 'empleados.add_empleados'
     template_name = "empleados/empleados.html"
 
     def get(self, request):
@@ -26,18 +28,21 @@ class EmpleadosListView(generic.ListView):
     model = Empleados
     template_name = "empleados/empleado_list.html"
     context_object_name = "empleados"
+    permission_required = 'empleados.view_empleados'
 
 # Vista para los detalles de un empleado
 class EmpleadosDetailView(generic.DetailView):
     model = Empleados
     template_name = "empleados/empleado_detail.html"
     context_object_name = "empleado"
+    permission_required = 'empleados.view_empleados'
 
 # Vista para editar un empleado
 class EmpleadosUpdateView(generic.UpdateView):
     model = Empleados
     form_class = EmpleadoForm  
     template_name = "empleados/empleado_form.html"
+    permission_required = 'empleados.view_empleados'
 
     def get_success_url(self):
         return reverse_lazy('empleados:empleado_list')  # Redirige a la lista de empleados
@@ -46,4 +51,5 @@ class EmpleadosUpdateView(generic.UpdateView):
 class EmpleadosDeleteView(generic.DeleteView):
     model = Empleados
     template_name = "empleados/empleado_confirm_delete.html"
+    permission_required = 'empleados.view_empleados'
     success_url = reverse_lazy('empleados:empleado_list')  # Redirige a la lista de empleados
